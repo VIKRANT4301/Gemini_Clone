@@ -21,7 +21,7 @@ const Main = () => {
     input,
   } = useContext(Context);
 
-  // State to hold the uploaded image and  To track the listening state
+
   const [uploadedImage, setUploadedImage] = useState(null);
   const [isListening, setIsListening] = useState(false);
 
@@ -30,14 +30,14 @@ const Main = () => {
   useEffect(() => {
     if (SpeechRecognition) {
       const recognitionInstance = new SpeechRecognition();
-      recognitionInstance.lang = 'en-US'; // Set language
-      recognitionInstance.continuous = false; // Stop after one result
-      recognitionInstance.interimResults = false; // Do not show interim results
-      recognitionInstance.maxAlternatives = 1; // Only consider one alternative
+      recognitionInstance.lang = 'en-US';
+      recognitionInstance.continuous = false;
+      recognitionInstance.interimResults = false;
+      recognitionInstance.maxAlternatives = 1;
 
       recognitionInstance.onresult = (event) => {
-        const transcript = event.results[0][0].transcript; // Get the transcript of the speech
-        setInput(transcript); // Update input field with transcript
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
       };
 
       recognitionInstance.onerror = (event) => {
@@ -85,7 +85,7 @@ const Main = () => {
       // If there's an uploaded image, send it along with the prompt
       onSent("Image uploaded with prompt", uploadedImage);
     } else {
-      // If no image, just send the prompt
+
       onSent(input);
     }
   };
@@ -143,12 +143,12 @@ const Main = () => {
                   <hr />
                 </div>
               ) : (
-                // Display result data (can include image or text)
+
                 <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
               )}
             </div>
 
-            {/* Show uploaded image if available */}
+
             {uploadedImage && (
               <div className="uploaded-image-preview">
                 <p>Uploaded Image:</p>
@@ -169,7 +169,6 @@ const Main = () => {
             <div>
 
 
-              {/* Image Upload Icon and Input */}
               <label htmlFor="imageUpload" style={{ cursor: 'pointer' }}>
                 <img src={assets.gallery_icon} alt="Gallery Icon" />
               </label>
@@ -181,7 +180,7 @@ const Main = () => {
                 accept="image/*"
               />
 
-              {/* Mic Icon for Speech Recognition */}
+              
               <img
                 src={isListening ? assets.mic_active_icon  : assets.mic_icon}
                 alt=" "

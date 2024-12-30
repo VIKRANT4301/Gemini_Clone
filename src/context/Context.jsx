@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { createContext, useState } from "react";
-import runChat from "../config/Gemini";  // Replace with actual import
+import runChat from "../config/Gemini"; 
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const Context = createContext();
@@ -12,7 +12,7 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const delayPara = (index, formattedResponse) => {
     setTimeout(() => {
@@ -26,7 +26,7 @@ const ContextProvider = (props) => {
   };
 
   const onSent = async (prompt) => {
-    setResultData(""); // Clear previous result
+    setResultData("");
     setLoading(true);
     setShowResult(true);
 
@@ -69,7 +69,7 @@ const ContextProvider = (props) => {
     for (let i = 0; i < newResponseArray.length; i++) {
       const nextWord = newResponseArray[i];
       formattedResponse += nextWord + " ";
-      delayPara(i, formattedResponse); // Incremental state updates
+      delayPara(i, formattedResponse);
     }
 
     setLoading(false);
